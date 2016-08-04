@@ -1,20 +1,20 @@
 package me.wjh.android.htmlui;
 
-import java.util.List;
-
-import me.wjh.android.htmlui.domain.Contact;
-import me.wjh.android.htmlui.service.ContactService;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
+
+import me.wjh.android.htmlui.domain.Contact;
+import me.wjh.android.htmlui.service.ContactService;
 
 public class MainActivity extends Activity {
 	private final static String TAG = "HtmlUIMainActivity";
@@ -30,19 +30,22 @@ public class MainActivity extends Activity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.addJavascriptInterface(new ContactsPlugin(), "contactsAction");
         webView.loadUrl("file:///android_asset/index.html");
+
+
+//		é˜¿æ–¯å¤§ä¸‰å¤§å››çš„
     }
     
     /**
-     * Õâ¸öÀàÌá¹©³öÁËÒ»¸öÊÓÍ¼ºÍÒµÎñ²ãÍ¨ÐÅµÄ½Ó¿Ú¡£HTML ÖÐ£¬Í¨¹ýÕâ¸öÀàµÄÊµÀý£¬¼ä½ÓÓëÒµÎñ Bean Í¨ÐÅ¡£
-     * ÎªÊ²Ã´²»Ö±½Ó½«ÒµÎñÀàÌá¹©¸ø  webView, ÈÃ  HTML ÖÐÖ±½Ó·ÃÎÊµ½Õâ¸öÀà¡£¶ø¶à³öÕâÑù "²å¼þ"~~
-     * ÎÒÏë£ºÄ¿Ç°µÄÕâÑùÒ»ÖÖ¼Ü¹¹£¬Activity ÉõÖÁÓÐÐ©ÀàËÆÓÚ¿ØÖÆÆ÷µÄ¸ÅÄîÁË¡£ÓÐµãÏñ struts ÖÐµÄ Action¡£
-     * ÔÚÊ¹ÓÃÁË struts ¿ò¼ÜµÄÏîÄ¿¼Ü¹¹ÖÐ£¬Action Ò²ÊÇ±»»®·Öµ½ÊÓÍ¼²ãµÄ¡£ËüºÍJSPÒ³Ãæ¹²Í¬Íê³É×¼±¸Êý¾ÝºÍÒ³ÃæÌø×ªµÄ¹¤×÷¡£
-     * Òò´Ë£¬ÕâÀïÎÒÃÇÒ²²»Ó¦¸ÃÈÃ HTML ÖÐµÄ JS Ö±½ÓÓëÒµÎñ²ãñîºÏ¡£ÊµÏÖ±íÏÖ²ãºÍÒµÎñ²ãµÄ½âñî
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Òµï¿½ï¿½ï¿½Í¨ï¿½ÅµÄ½Ó¿Ú¡ï¿½HTML ï¿½Ð£ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ Bean Í¨ï¿½Å¡ï¿½
+     * ÎªÊ²Ã´ï¿½ï¿½Ö±ï¿½Ó½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½  webView, ï¿½ï¿½  HTML ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½à¡£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ "ï¿½ï¿½ï¿½"~~
+     * ï¿½ï¿½ï¿½ë£ºÄ¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ö¼Ü¹ï¿½ï¿½ï¿½Activity ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½Ë¡ï¿½ï¿½Ðµï¿½ï¿½ï¿½ struts ï¿½Ðµï¿½ Actionï¿½ï¿½
+     * ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ struts ï¿½ï¿½Üµï¿½ï¿½ï¿½Ä¿ï¿½Ü¹ï¿½ï¿½Ð£ï¿½Action Ò²ï¿½Ç±ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½JSPÒ³ï¿½æ¹²Í¬ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½Ýºï¿½Ò³ï¿½ï¿½ï¿½ï¿½×ªï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½
+     * ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ HTML ï¿½Ðµï¿½ JS Ö±ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½Ï¡ï¿½Êµï¿½Ö±ï¿½ï¿½Ö²ï¿½ï¿½Òµï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½
      */
     private class ContactsPlugin {
     	/**
-    	 * ´Ë·½·¨½«Ö´ÐÐ JS ´úÂë£¬µ÷ÓÃ JS º¯Êý£ºshow()
-    	 * ÊµÏÖ£¬½«ÁªÏµÈËÐÅÏ¢Õ¹Ê¾µ½ HTML Ò³ÃæÉÏ
+    	 * ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ JS ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ JS ï¿½ï¿½ï¿½ï¿½show()
+    	 * Êµï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ï¢Õ¹Ê¾ï¿½ï¿½ HTML Ò³ï¿½ï¿½ï¿½ï¿½
     	 */
     	@SuppressWarnings("unused")
 		public void getContacts() {
@@ -63,7 +66,7 @@ public class MainActivity extends Activity {
 			}
     	}
     	/**
-    	 * ²¦ºÅ
+    	 * ï¿½ï¿½ï¿½ï¿½
     	 */
     	@SuppressWarnings("unused")
 		public void call(String phoneCode) {
