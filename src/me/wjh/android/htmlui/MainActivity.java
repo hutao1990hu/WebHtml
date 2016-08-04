@@ -31,7 +31,6 @@ public class MainActivity extends Activity {
         webView.addJavascriptInterface(new ContactsPlugin(), "contactsAction");
         webView.loadUrl("file:///android_asset/index.html");
 
-
 //		阿斯大三大四的
     }
     
